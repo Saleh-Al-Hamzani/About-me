@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+//sad
+
+  <title>About Me</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f4f4f8;
+      color: #333;
+      line-height: 1.6;
+      padding: 40px 20px;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: auto;
+      background: #fff;
+      border-radius: 12px;
+      padding: 40px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .profile {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .profile img {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 20px;
+      border: 4px solid #ddd;
+    }
+
+    h1 {
+      font-size: 2.2em;
+      margin-bottom: 10px;
+      color: #222;
+    }
+
+    p.title {
+      color: #777;
+      font-size: 1.1em;
+      margin-bottom: 20px;
+    }
+
+    .bio {
+      margin-bottom: 30px;
+      font-size: 1.05em;
+      color: #555;
+    }
+
+    .skills {
+      margin-top: 20px;
+    }
+
+    .skills h2 {
+      font-size: 1.5em;
+      margin-bottom: 15px;
+      color: #444;
+    }
+
+    .skill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .skill {
+      background: #e0e7ff;
+      color: #1e3a8a;
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 0.95em;
+    }
+
+    .social-links {
+      margin-top: 40px;
+      text-align: center;
+    }
+
+    .social-links h2 {
+      font-size: 1.4em;
+      margin-bottom: 15px;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .button {
+      text-decoration: none;
+      padding: 10px 20px;
+      border-radius: 30px;
+      font-size: 0.95em;
+      color: white;
+      background-color: #3b82f6;
+      transition: background 0.3s ease;
+    }
+
+    .button:hover {
+      background-color: #2563eb;
+    }
+
+    .contact {
+      margin-top: 40px;
+      text-align: center;
+      font-size: 1.1em;
+      color: #444;
+    }
+
+    .contact h2 {
+      margin-bottom: 15px;
+    }
+
+    .contact a {
+      color: #3b82f6;
+      text-decoration: none;
+    }
+
+    .contact a:hover {
+      text-decoration: underline;
+    }
+
+    @media (min-width: 768px) {
+      .profile {
+        flex-direction: row;
+        text-align: left;
+        gap: 30px;
+      }
+
+      .profile img {
+        margin-bottom: 0;
+      }
+
+      h1 {
+        font-size: 2.5em;
+      }
+
+      .bio {
+        font-size: 1.1em;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="profile">
+      <img src="Profile Image.png" alt="Profile Image" />
+      <div>
+        <h1>Saleh Al-Hamzani</h1>
+        <p class="title">Game Developer & Designer</p>
+      </div>
+    </div>
+
+    <div class="bio">
+      <p>
+        I am a passionate and motivated Unity developer with a solid foundation in game design, programming, and 3D game art. I enjoy solving complex problems and creating immersive gameplay experiences. Skilled in C#, AI, UI design, and multiplayer systems, I also have strong knowledge of 3D modeling and texturing, which helps me understand how high-quality visuals enhance gameplay and storytelling by creating engaging environments.
+
+I thrive in collaborative settings and am committed to continuous learning and improvement to deliver polished, immersive games.
+      </p>
+    </div>
+
+    <div class="skills">
+      <h2>Skills</h2>
+      <div class="skill-list">
+        <div class="skill">Unity</div>
+        <div class="skill">C#</div>
+        <div class="skill">Multiplayer Games</div>
+        <div class="skill">Gameplay Programming</div>
+        <div class="skill">GameDevelopment</div>
+        <div class="skill">3d Art</div>
+        <div class="skill">Maya</div>
+        <div class="skill">Substance Painter</div>
+      </div>
+    </div>
+
+    <div class="social-links">
+      <h2>Find Me On</h2>
+      <div class="buttons">
+        <a class="button" href="https://www.linkedin.com/in/saleh-al-hamzani-8059501b9/" target="_blank">
+        <i class="fab fa-linkedin"></i> LinkedIn
+        </a>
+        <a class="button" href="https://www.artstation.com/exr" target="_blank">
+        <i class="fa-brands fa-artstation"></i> ArtStation
+        </a>
+        <a class="button" href="https://www.canva.com/design/DAGn6ZJ-xyw/HzmrG3lW3jcZ068LhV-pww/edit?utm_content=DAGn6ZJ-xyw&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" target="_blank">
+            <i class="fa-solid fa-code"></i> Portfolio</a>
+        <a class="button" href="https://saleh-al-hamzain.itch.io/" target="_blank">
+        <i class="fa-brands fa-itch-io"></i> Itch.io
+        </a>
+        <a class="button" href="https://github.com/Saleh-Al-Hamzani" target="_blank">
+        <i class="fab fa-github"></i> GitHub
+        </a>
+       <a class="button" href="Saleh-Mutlaq-Al-Shammar CV.pdf" target="_blank" rel="noopener noreferrer">📄 View CV</a>
+
+      </div>
+    </div>
+
+    <div class="contact">
+      <h2>Contact Me</h2>
+      <p>Email: <a href="mailto:saleh520004@gmail.com">saleh520004@gmail.com</a></p>
+      <p>Phone: <a href="tel:966533482632">966533482632</a></p>
+    </div>
+  </div>
+</body>
+</html>
