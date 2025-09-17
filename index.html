@@ -103,17 +103,10 @@
     Saleh Al-Hamzani. All rights reserved.
   </footer>
 <script src="https://cdn.jsdelivr.net/npm/counterapi/dist/counter.browser.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const counter = new Counter({ workspace: 'about me' });
 
-  <script>
-
-   document.addEventListener('DOMContentLoaded', function() {
-    // Initialize Counter
-    const counter = new Counter({
-      workspace: 'about me',  
-      accessToken: 'ut_IginmsZ89JnZ8HohEPMhu0qmhRBAWkh83N9IZZ0E' // optional if your API needs it
-    });
-
-    // Increment the page view
     counter.up('page-views')
       .then(result => {
         document.getElementById('visitor-count').textContent = result.value;
@@ -122,7 +115,9 @@
         console.error('Error tracking page view:', error);
         document.getElementById('visitor-count').textContent = 'Error loading count';
       });
-  });
+});
+</script>
+
  
   </script>
 </body>
