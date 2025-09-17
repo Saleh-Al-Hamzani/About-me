@@ -103,13 +103,27 @@
 
   <script>
     // Unique namespace + key so it doesn’t mix with others
-   const namespace = "saleh-al-hamzani-profile"; // unique name
+  const namespace = "saleh-al-hamzani-profile"; // unique namespace
   const key = "visits";
 
-  fetch(`https://api.countapi.xyz/hit/${namespace}/${key}`)
+  // First ensure the counter exists (set it to 0 if not)
+  fetch(`https://api.countapi.xyz/get/${namespace}/${key}`)
     .then(res => res.json())
     .then(data => {
-      document.getElementById("visitor-count").textContent = data.value;
+      if (data.status === 404) {
+        // counter doesn't exist yet -> create it
+        return fetch(`https://api.countapi.xyz/set/${namespace}/${key}?value=0`)
+          .then(() => ({ value: 0 }));
+      }
+      return data;
+    })
+    .then(() => {
+      // now increment and show value
+      return fetch(`https://api.countapi.xyz/hit/${namespace}/${key}`)
+        .then(res => res.json())
+        .then(data => {
+          document.getElementById("visitor-count").textContent = data.value;
+        });
     })
     .catch(err => {
       console.error("Visitor counter error:", err);
