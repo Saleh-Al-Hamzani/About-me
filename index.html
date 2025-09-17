@@ -105,10 +105,11 @@
 <script src="https://cdn.jsdelivr.net/npm/counterapi/dist/counter.browser.min.js"></script>
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    // Use the workspace slug, not the display name
+    // Use your workspace slug
     const counter = new Counter({ workspace: 'about-me-saleh-exr' });
 
-    counter.up('page-views')
+    // Use a valid key name
+    counter.up('visitors_salehs')  // <-- key must be alphanumeric
       .then(result => {
         document.getElementById('visitor-count').textContent = result.value;
       })
@@ -118,6 +119,7 @@ document.addEventListener('DOMContentLoaded', function() {
       });
 });
 </script>
+
 
 
  
