@@ -103,16 +103,17 @@
 
   <script>
     // Unique namespace + key so it doesn’t mix with others
-    const namespace = "saleh-al-hamzani-profile";
-    const key = "visits";
+   const namespace = "saleh-al-hamzani-profile"; // unique name
+  const key = "visits";
 
-    fetch(`https://api.countapi.xyz/hit/${namespace}/${key}`)
-      .then(res => res.json())
-      .then(data => {
-        document.getElementById("visitor-count").textContent = data.value;
-      })
-      .catch(() => {
-        document.getElementById("visitor-count").textContent = "N/A";
+  fetch(`https://api.countapi.xyz/hit/${namespace}/${key}`)
+    .then(res => res.json())
+    .then(data => {
+      document.getElementById("visitor-count").textContent = data.value;
+    })
+    .catch(err => {
+      console.error("Visitor counter error:", err);
+      document.getElementById("visitor-count").textContent = "Unavailable";
       });
   </script>
 </body>
