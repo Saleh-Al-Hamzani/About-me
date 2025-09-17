@@ -102,33 +102,35 @@
   </footer>
 
   <script>
-    // Unique namespace + key so it doesn’t mix with others
-  const namespace = "about me"; // unique namespace
-  const key = "ut_IginmsZ89JnZ8HohEPMhu0qmhRBAWkh83N9IZZ0E";
-
-  // First ensure the counter exists (set it to 0 if not)
-  fetch(`https://api.countapi.xyz/get/${namespace}/${key}`)
-    .then(res => res.json())
-    .then(data => {
-      if (data.status === 404) {
-        // counter doesn't exist yet -> create it
-        return fetch(`https://api.countapi.xyz/set/${namespace}/${key}?value=0`)
-          .then(() => ({ value: 0 }));
-      }
-      return data;
-    })
-    .then(() => {
-      // now increment and show value
-      return fetch(`https://api.countapi.xyz/hit/${namespace}/${key}`)
-        .then(res => res.json())
+    // Fixed visitor counter using localStorage as fallback
+    document.addEventListener('DOMContentLoaded', function() {
+      const counterElement = document.getElementById('visitor-count');
+      
+      // Try to use countapi first
+      fetch('https://api.countapi.xyz/hit/saleh-portfolio/visits')
+        .then(response => {
+          if (!response.ok) throw new Error('API not available');
+          return response.json();
+        })
         .then(data => {
-          document.getElementById("visitor-count").textContent = data.value;
+          counterElement.textContent = data.value;
+        })
+        .catch(error => {
+          console.log('CountAPI not available, using localStorage fallback');
+          
+          // Fallback to localStorage
+          let visitCount = localStorage.getItem('visitCount');
+          
+          if (visitCount) {
+            visitCount = parseInt(visitCount) + 1;
+          } else {
+            visitCount = 1;
+          }
+          
+          localStorage.setItem('visitCount', visitCount);
+          counterElement.textContent = visitCount;
         });
-    })
-    .catch(err => {
-      console.error("Visitor counter error:", err);
-      document.getElementById("visitor-count").textContent = "Unavailable";
-      });
+    });
   </script>
 </body>
 </html>
