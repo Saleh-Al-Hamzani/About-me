@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
+  
 <head>
+  
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <meta name="theme-color" content="#3b82f6" />
@@ -100,37 +102,28 @@
   <footer class="footer">
     Saleh Al-Hamzani. All rights reserved.
   </footer>
+<script src="https://cdn.jsdelivr.net/npm/counterapi/dist/counter.browser.min.js"></script>
 
   <script>
-    // Fixed visitor counter using localStorage as fallback
-    document.addEventListener('DOMContentLoaded', function() {
-      const counterElement = document.getElementById('visitor-count');
-      
-      // Try to use countapi first
-      fetch('https://api.countapi.xyz/hit/saleh-portfolio/visits')
-        .then(response => {
-          if (!response.ok) throw new Error('API not available');
-          return response.json();
-        })
-        .then(data => {
-          counterElement.textContent = data.value;
-        })
-        .catch(error => {
-          console.log('CountAPI not available, using localStorage fallback');
-          
-          // Fallback to localStorage
-          let visitCount = localStorage.getItem('visitCount');
-          
-          if (visitCount) {
-            visitCount = parseInt(visitCount) + 1;
-          } else {
-            visitCount = 1;
-          }
-          
-          localStorage.setItem('visitCount', visitCount);
-          counterElement.textContent = visitCount;
-        });
+
+   document.addEventListener('DOMContentLoaded', function() {
+    // Initialize Counter
+    const counter = new Counter({
+      workspace: 'about me',  
+      accessToken: 'ut_IginmsZ89JnZ8HohEPMhu0qmhRBAWkh83N9IZZ0E' // optional if your API needs it
     });
+
+    // Increment the page view
+    counter.up('page-views')
+      .then(result => {
+        document.getElementById('visitor-count').textContent = result.value;
+      })
+      .catch(error => {
+        console.error('Error tracking page view:', error);
+        document.getElementById('visitor-count').textContent = 'Error loading count';
+      });
+  });
+ 
   </script>
 </body>
 </html>
