@@ -1,0 +1,116 @@
+/* ==========================================================================
+   SELECTED ARCHIVE — LIGHTWEIGHT PROJECT CARDS
+   File: css/archive.css
+   Purpose: Three cleanly presented project artifacts without heavy chrome or corner marks.
+   ========================================================================== */
+
+#archive {
+    position: relative;
+}
+
+.archive-sequence {
+    display: flex;
+    flex-direction: column;
+    gap: 5rem;
+}
+
+.proj-poster {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4vw;
+    align-items: center;
+    position: relative;
+}
+
+.pp-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.pp-meta {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    color: var(--terra);
+    text-transform: uppercase;
+}
+
+.pp-title {
+    font-size: clamp(2rem, 3.2vw, 3.2rem);
+    letter-spacing: -0.03em;
+    line-height: 1.05;
+    color: var(--ink);
+}
+
+.pp-desc {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: var(--ink);
+}
+
+.pp-tech-badge {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    font-weight: 600;
+}
+
+/* Visuals: Lightweight Cards */
+.pp-visual .lightweight-card,
+.pp-visual .studio-card {
+    padding: 0.65rem;
+    border-radius: 2px;
+}
+
+.pp-visual .img-box {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    background: #0f1318;
+    border: 1px solid var(--rule);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pp-visual img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+}
+
+/* Alternating Project Layouts */
+.pp-1 .pp-visual { order: 2; }
+.pp-1 .pp-content { order: 1; }
+
+.pp-2 .pp-visual { order: 1; }
+.pp-2 .pp-content { order: 2; }
+
+.pp-3 .pp-visual { order: 2; }
+.pp-3 .pp-content { order: 1; }
+
+/* --------------------------------------------------------------------------
+   RESPONSIVE
+   -------------------------------------------------------------------------- */
+@media (max-width: 900px) {
+    .archive-sequence {
+        gap: 3.5rem;
+    }
+
+    .proj-poster {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .pp-1 .pp-visual, .pp-2 .pp-visual, .pp-3 .pp-visual {
+        order: 1;
+    }
+
+    .pp-1 .pp-content, .pp-2 .pp-content, .pp-3 .pp-content {
+        order: 2;
+    }
+}

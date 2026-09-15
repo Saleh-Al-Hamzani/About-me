@@ -1,0 +1,118 @@
+/* ==========================================================================
+   HERO — BOLD TYPOGRAPHIC IDENTITY
+   File: css/hero.css
+   Purpose: Massive typographic name inspired by sdf.html, prominent bio and CTAs.
+            Zero overflow, perfectly visible across all screen sizes.
+   ========================================================================== */
+
+.hero-poster {
+    min-height: 82vh;
+    padding-top: clamp(6.5rem, 14vh, 9.5rem);
+    padding-bottom: clamp(3.5rem, 8vh, 5.5rem);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: clamp(2rem, 3.5vw, 3rem);
+    position: relative;
+}
+
+/* --------------------------------------------------------------------------
+   ROLE KICKER
+   -------------------------------------------------------------------------- */
+.hero-label {
+    display: block;
+    font: 600 0.78rem/1 var(--font-mono);
+    letter-spacing: 0.16em;
+    color: var(--terra);
+    text-transform: uppercase;
+}
+
+/* --------------------------------------------------------------------------
+   MASSIVE TYPOGRAPHIC NAME (Inspired by sdf.html)
+   -------------------------------------------------------------------------- */
+.hero-name-group {
+    display: flex;
+    flex-direction: column;
+    line-height: 0.86;
+}
+
+.h-name-1 {
+    font-size: clamp(3.8rem, 10.5vw, 9.5rem);
+    line-height: 0.86;
+    letter-spacing: -0.04em;
+    color: var(--ink);
+    margin: 0;
+}
+
+.h-name-2 {
+    font-size: clamp(2.4rem, 6.8vw, 6.2rem);
+    line-height: 0.92;
+    letter-spacing: -0.025em;
+    color: var(--muted);
+    font-weight: 400;
+    margin-top: 0.4rem;
+    margin-left: clamp(0.5rem, 3.5vw, 3.5rem);
+}
+
+html[dir="rtl"] .h-name-2 {
+    margin-left: 0;
+    margin-right: clamp(0.5rem, 3.5vw, 3.5rem);
+}
+
+/* --------------------------------------------------------------------------
+   BIO & CTAS GROUP
+   -------------------------------------------------------------------------- */
+.hero-bottom-group {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    max-width: 720px;
+}
+
+.hero-bio {
+    font-size: clamp(1.08rem, 1.4vw, 1.25rem);
+    line-height: 1.75;
+    color: var(--ink);
+    border-left: 2.5px solid var(--terra);
+    padding-left: 1.4rem;
+    margin: 0;
+}
+
+html[dir="rtl"] .hero-bio {
+    border-left: none;
+    border-right: 2.5px solid var(--terra);
+    padding-left: 0;
+    padding-right: 1.4rem;
+}
+
+.hero-ctas {
+    display: flex;
+    gap: 1.4rem;
+    align-items: center;
+    flex-wrap: wrap;
+    padding-top: 0.2rem;
+}
+
+/* --------------------------------------------------------------------------
+   RESPONSIVE
+   -------------------------------------------------------------------------- */
+@media (max-width: 768px) {
+    .hero-poster {
+        min-height: auto;
+        padding-top: 6rem;
+        padding-bottom: 3.5rem;
+        gap: 2rem;
+    }
+
+    .h-name-2 {
+        margin-left: 0;
+    }
+
+    html[dir="rtl"] .h-name-2 {
+        margin-right: 0;
+    }
+
+    .hero-ctas {
+        gap: 1rem;
+    }
+}

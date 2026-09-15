@@ -1,0 +1,16 @@
+/* ==========================================================================
+   MASTER STYLESHEET
+   File: css/style.css
+   Purpose: Aggregates all modular stylesheets for clean one-link inclusion.
+   ========================================================================== */
+
+@import 'variables.css';
+@import 'base.css';
+@import 'nav.css';
+@import 'hero.css';
+@import 'featured.css';
+@import 'about.css';
+@import 'experience.css';
+@import 'tech.css';
+@import 'archive.css';
+@import 'contact.css';

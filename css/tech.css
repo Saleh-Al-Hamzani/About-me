@@ -1,0 +1,430 @@
+/* ==========================================================================
+   GITHUB ACTIVITY & METRICS POSTER
+   File: css/tech.css
+   Purpose: Clean display for GitHub activity, live repository metrics, and languages.
+   ========================================================================== */
+
+.tech-poster {
+    background: var(--paper-2);
+    color: var(--ink);
+    padding: 3rem 4vw;
+    border: 1.5px solid var(--ink);
+    box-shadow: var(--shadow-brutal);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Blueprint drafting grid */
+.tech-poster::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(44, 42, 40, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(44, 42, 40, 0.05) 1px, transparent 1px);
+    background-size: 24px 24px;
+    opacity: 0.7;
+    pointer-events: none;
+}
+
+[data-theme='dark'] .tech-poster::before {
+    background-image:
+        linear-gradient(rgba(240, 236, 229, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(240, 236, 229, 0.05) 1px, transparent 1px);
+}
+
+.tech-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1.5px solid var(--ink);
+    color: var(--terra);
+    margin-bottom: 2.2rem;
+    padding-bottom: 0.9rem;
+    font: 600 0.72rem/1 var(--font-mono);
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    position: relative;
+    z-index: 2;
+}
+
+.tech-header a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.15s ease;
+}
+
+.tech-header a:hover {
+    color: var(--ink);
+}
+
+.tech-summary-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+    position: relative;
+    z-index: 2;
+}
+
+.ts-item {
+    background: var(--paper);
+    border: 1.5px solid var(--ink);
+    box-shadow: 2px 2px 0 var(--ink);
+    padding: 1rem 1.2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+}
+
+.ts-label {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    text-transform: uppercase;
+}
+
+.ts-val {
+    font-family: var(--font-mono);
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: var(--terra);
+}
+
+.tech-grid {
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 2rem;
+    position: relative;
+    z-index: 2;
+    align-items: stretch;
+}
+
+.tech-card {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    background: var(--paper);
+    border: 1.5px solid var(--ink);
+    box-shadow: 3px 3px 0 var(--ink);
+    padding: 1.5rem;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.tech-card:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 5px 5px 0 var(--ink);
+}
+
+.tc-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 0.75rem;
+}
+
+.tc-header .meta-text {
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    font-weight: 700;
+    color: var(--terra);
+}
+
+.tc-link, .tc-sub {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    font-weight: 600;
+    color: var(--terra);
+    text-decoration: none;
+    letter-spacing: 0.08em;
+}
+
+.tc-link:hover {
+    color: var(--ink);
+}
+
+.gh-repo-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+}
+
+.gh-repo-item {
+    background: var(--paper-2);
+    border: 1px solid var(--rule);
+    padding: 0.95rem 1.1rem;
+    text-decoration: none;
+    color: var(--ink);
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+    transition: transform 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.gh-repo-item:hover {
+    transform: translateY(-2px);
+    border-color: var(--terra);
+    box-shadow: 3px 3px 0 var(--terra);
+}
+
+.gh-repo-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.gh-repo-name {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--ink);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.gh-repo-name i {
+    color: var(--terra);
+    font-size: 0.78rem;
+}
+
+.gh-repo-stars {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--muted);
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+.gh-repo-desc {
+    font-size: 0.82rem;
+    line-height: 1.5;
+    color: var(--muted);
+    margin: 0;
+}
+
+.gh-repo-meta {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 0.2rem;
+}
+
+.gh-lang-tag {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    font-weight: 600;
+    color: var(--ink);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.gh-lang-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.dot-csharp { background: #178600; }
+.dot-kotlin { background: #A97BFF; }
+.dot-html { background: #E34C26; }
+.dot-misc { background: var(--muted); }
+
+/* Language breakdown */
+.gh-langs-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+.gh-lang-progress-bar {
+    display: flex;
+    height: 10px;
+    border-radius: 5px;
+    overflow: hidden;
+    background: var(--rule);
+    width: 100%;
+}
+
+.gh-bar-segment {
+    height: 100%;
+    transition: width 0.3s ease;
+}
+
+.seg-kotlin { background: #A97BFF; }
+.seg-csharp { background: #178600; }
+.seg-html { background: #E34C26; }
+
+.gh-lang-breakdown {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.gh-lb-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.65rem 0.9rem;
+    background: var(--paper-2);
+    border: 1px solid var(--rule);
+}
+
+.gh-lb-info {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+.gh-lb-name {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--ink);
+}
+
+.gh-lb-pct {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--terra);
+}
+
+.gh-note-box {
+    margin-top: 0.5rem;
+    padding: 0.9rem 1.1rem;
+    background: var(--paper-2);
+    border-left: 3px solid var(--terra);
+    font-size: 0.78rem;
+    line-height: 1.55;
+    color: var(--muted);
+    display: flex;
+    gap: 0.75rem;
+    align-items: flex-start;
+}
+
+html[dir="rtl"] .gh-note-box {
+    border-left: none;
+    border-right: 3px solid var(--terra);
+}
+
+.gh-note-box i {
+    color: var(--terra);
+    margin-top: 0.2rem;
+}
+
+/* Dynamic State Styles */
+.gh-skeleton {
+    display: inline-block;
+    color: var(--muted);
+    animation: gh-pulse 1.4s ease-in-out infinite;
+}
+
+@keyframes gh-pulse {
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 0.9; }
+}
+
+.gh-state-box {
+    background: var(--paper-2);
+    border: 1px dashed var(--rule);
+    padding: 2rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    color: var(--muted);
+    font-size: 0.82rem;
+    font-family: var(--font-mono);
+    text-align: center;
+}
+
+.gh-loading-state i {
+    color: var(--terra);
+    font-size: 1.1rem;
+}
+
+.gh-error-state {
+    border-color: var(--terra);
+    background: rgba(184, 92, 67, 0.05);
+    color: var(--ink);
+    align-items: flex-start;
+    text-align: left;
+}
+
+html[dir="rtl"] .gh-error-state {
+    text-align: right;
+}
+
+.gh-error-state i {
+    color: var(--terra);
+    font-size: 1.2rem;
+    margin-top: 0.2rem;
+}
+
+.gh-error-content p {
+    margin: 0 0 0.5rem 0;
+    line-height: 1.5;
+}
+
+.gh-error-link {
+    display: inline-block;
+    color: var(--terra);
+    font-weight: 700;
+    text-decoration: none;
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+}
+
+.gh-error-link:hover {
+    text-decoration: underline;
+}
+
+.gh-empty-desc {
+    font-style: italic;
+    color: var(--muted);
+    opacity: 0.7;
+}
+
+.gh-bar-loading {
+    background: linear-gradient(90deg, var(--rule) 25%, var(--paper-2) 50%, var(--rule) 75%);
+    background-size: 200% 100%;
+    animation: gh-shimmer 1.8s infinite;
+}
+
+.gh-bar-empty {
+    background: var(--rule);
+}
+
+@keyframes gh-shimmer {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
+/* Responsive */
+@media (max-width: 960px) {
+    .tech-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .tech-poster {
+        padding: 2rem 1.2rem;
+    }
+
+    .tech-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+}
+

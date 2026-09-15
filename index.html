@@ -1,139 +1,477 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light" dir="ltr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta name="theme-color" content="#3b82f6" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <link rel="icon" href="Profile Image.ico" type="image/x-icon"/>
-  <title>About Saleh Al-Hamzani</title>
-  <style>
-    * {margin: 0; padding: 0; box-sizing: border-box;}
-    body {font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f4f4f8; color: #333; line-height: 1.6; padding: 40px 20px;}
-    .container {max-width: 900px; margin: auto; background: #fff; border-radius: 12px; padding: 40px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);}
-    .profile {display: flex; flex-direction: column; align-items: center; text-align: center; margin-bottom: 30px;}
-    .profile img {width: 140px; height: 140px; border-radius: 50%; object-fit: cover; margin-bottom: 20px; border: 4px solid #ddd;}
-    h1 {font-size: 2.2em; margin-bottom: 10px; color: #222;}
-    p.title {color: #777; font-size: 1.1em; margin-bottom: 20px;}
-    .bio {margin-bottom: 30px; font-size: 1.05em; color: #555;}
-    .skills {margin-top: 20px;}
-    .skills h2 {font-size: 1.5em; margin-bottom: 15px; color: #444;}
-    .skill-list {display: flex; flex-wrap: wrap; gap: 12px;}
-    .skill {background: #e0e7ff; color: #1e3a8a; padding: 8px 16px; border-radius: 20px; font-size: 0.95em;}
-    .social-links {margin-top: 40px; text-align: center;}
-    .social-links h2 {font-size: 1.4em; margin-bottom: 15px;}
-    .buttons {display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;}
-    .button {text-decoration: none; padding: 10px 20px; border-radius: 30px; font-size: 0.95em; color: white; background-color: #3b82f6; transition: background 0.3s ease;}
-    .button:hover {background-color: #2563eb;}
-    .contact {margin-top: 40px; text-align: center; font-size: 1.1em; color: #444;}
-    .contact h2 {margin-bottom: 15px;}
-    .contact a {color: #3b82f6; text-decoration: none;}
-    .contact a:hover {text-decoration: underline;}
-    .footer {text-align: center; margin-top: 40px; padding: 20px 0; color: #666; font-size: 0.9em;}
-    .counter {margin-top: 20px; text-align: center; font-size: 1em; color: #555;}
-    #error-message {color:red; margin-top:10px;}
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saleh Al-Shammari — Game Producer & Unity Developer</title>
+    <meta name="description" content="Game Producer & Unity Developer portfolio. Bridging game production, Unity gameplay programming, and 3D art.">
+
+    <!-- Preconnect & Google Fonts (Inter, Playfair Display, JetBrains Mono, Alexandria, Amiri) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@300;400;500;600;700&family=Amiri:wght@400;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Master Stylesheet -->
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-<div class="container">
-  <div class="profile">
-    <img src="Profile Image.png" alt="Profile Image" />
-    <div>
-      <h1>Saleh Al-Hamzani</h1>
-      <p class="title">Game Developer & Designer</p>
+    <!-- Top Scroll Progress Hairline -->
+    <div id="scroll" aria-hidden="true"></div>
+
+    <!-- ==========================================================================
+         NAVIGATION — Floating Studio Header
+         Styles: css/nav.css
+         ========================================================================== -->
+    <nav class="nav-system">
+        <a href="#hero" class="nav-brand">
+            <div class="nav-brand-main">
+                SALEH AL-SHAMMARI
+                <span class="nav-tag" data-i18n="nav_role_tag">PRODUCER</span>
+            </div>
+            <span class="nav-brand-sub" data-i18n="nav_subtitle">GAME PRODUCER & DEV</span>
+        </a>
+        
+        <div class="nav-desktop-menu">
+            <a href="#featured" class="nav-link" data-i18n="nav_work">Work</a>
+            <a href="#about" class="nav-link" data-i18n="nav_about">About</a>
+            <a href="#experience" class="nav-link" data-i18n="nav_exp">Experience</a>
+            <a href="#github" class="nav-link" data-i18n="nav_git">GitHub</a>
+            <a href="#archive" class="nav-link" data-i18n="nav_arch">Archive</a>
+            <a href="#contact" class="nav-link" data-i18n="nav_contact">Contact</a>
+        </div>
+        
+        <div class="nav-controls">
+            <button class="ctrl-btn" id="langToggle" aria-label="Switch Language">EN / AR</button>
+            <button class="ctrl-btn" id="themeToggle" aria-label="Toggle Theme"><i class="fa-solid fa-circle-half-stroke"></i></button>
+            <button class="ctrl-btn mobile-menu-btn" id="mobileMenuBtn" aria-label="Open Menu">MENU</button>
+        </div>
+    </nav>
+
+    <!-- MOBILE MENU OVERLAY -->
+    <div class="mobile-overlay" id="mobileMenu">
+        <button class="ctrl-btn" id="closeMenuBtn" style="position:absolute; top: 1.8rem; right: var(--pad-x); font-size: 0.85rem;">CLOSE [✕]</button>
+        <div class="mobile-nav-links">
+            <a href="#featured" class="nav-link" data-i18n="nav_work">Work</a>
+            <a href="#about" class="nav-link" data-i18n="nav_about">About</a>
+            <a href="#experience" class="nav-link" data-i18n="nav_exp">Experience</a>
+            <a href="#github" class="nav-link" data-i18n="nav_git">GitHub</a>
+            <a href="#archive" class="nav-link" data-i18n="nav_arch">Archive</a>
+            <a href="#contact" class="nav-link" data-i18n="nav_contact">Contact</a>
+        </div>
     </div>
-  </div>
 
-  <div class="bio">
-    <p>
-      I am a passionate and motivated Unity developer with a solid foundation in game design, programming, and 3D game art. I enjoy solving complex problems and creating immersive gameplay experiences. Skilled in C#, AI, UI design, and multiplayer systems, I also have strong knowledge of 3D modeling and texturing, which helps me understand how high-quality visuals enhance gameplay and storytelling by creating engaging environments.
-      I thrive in collaborative settings and am committed to continuous learning and improvement to deliver polished, immersive games.
-    </p>
-  </div>
+    <!-- MAIN CONTENT -->
+    <main>
+        <!-- ==========================================================================
+             01 HERO — "Bold Typographic Identity"
+             Styles: css/hero.css
+             ========================================================================== -->
+        <section class="grid-container hero-poster" id="hero">
+            <span class="hero-label reveal" data-i18n="hero_role_small">GAME PRODUCER / UNITY DEVELOPER</span>
+            
+            <div class="hero-name-group reveal">
+                <h1 class="display-text h-name-1" data-i18n="hero_n1">SALEH</h1>
+                <h2 class="display-text h-name-2" data-i18n="hero_n2">MUTLAQ AL-SHAMMARI</h2>
+            </div>
+            
+            <div class="hero-bottom-group reveal">
+                <p class="hero-bio" data-i18n="hero_bio">I work across game production and Unity development — from planning and team coordination to gameplay systems and implementation.</p>
+                
+                <div class="hero-ctas">
+                    <a href="#featured" class="btn-primary" data-i18n="btn_work">View Featured Work <i class="fa-solid fa-arrow-right"></i></a>
+                    <a href="SalehMutlaqAlShammariResume.pdf" target="_blank" rel="noopener noreferrer" class="btn-secondary" data-i18n="btn_resume">Download Resume <i class="fa-solid fa-file-arrow-down"></i></a>
+                </div>
+            </div>
+        </section>
 
-  <div class="skills">
-    <h2>Skills</h2>
-    <div class="skill-list">
-      <div class="skill">Unity</div>
-      <div class="skill">C#</div>
-      <div class="skill">Multiplayer Games</div>
-      <div class="skill">Gameplay Programming</div>
-      <div class="skill">Game Development</div>
-      <div class="skill">3D Art</div>
-      <div class="skill">Maya</div>
-      <div class="skill">Substance Painter</div>
-    </div>
-  </div>
+        <!-- ==========================================================================
+             02 FEATURED WORK — Centerpiece Showcase (Pizza Knight)
+             Styles: css/featured.css
+             ========================================================================== -->
+        <section class="grid-container poster-section" id="featured">
+            <span class="section-title" data-i18n="sec_feat">FEATURED WORK</span>
+            
+            <div class="feat-layout">
+                <div class="feat-visual clip-reveal">
+                    <div class="signature-card">
+                        <span class="p-plus tl">+</span>
+                        <span class="p-plus tr">+</span>
+                        <span class="p-plus bl">+</span>
+                        <span class="p-plus br">+</span>
+                        <div class="img-box">
+                            <img src="assets/pizza-knight-hero.jpg" alt="Pizza Knight Gameplay Banner">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="feat-content reveal">
+                    <h2 class="display-text feat-title" data-i18n="feat_title">PIZZA KNIGHT<span>OUT TO DELIVER</span></h2>
+                    <span class="feat-roles" data-i18n="feat_roles">Producer • Unity Developer • 3D Artist</span>
+                    
+                    <p class="feat-desc" data-i18n="feat_desc">A fast-paced rogue-lite action game developed in Unity. I contributed across production, gameplay programming, UI systems, and 3D integration.</p>
+                    
+                    <ul class="feat-bullets">
+                        <li data-i18n="feat_b1">Production, sprint planning, and team coordination</li>
+                        <li data-i18n="feat_b2">Gameplay systems and UI implementation in Unity/C#</li>
+                        <li data-i18n="feat_b3">JSON persistence implementation</li>
+                        <li data-i18n="feat_b4">3D integration and public pitching at industry events</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
 
-  <div class="social-links">
-    <h2>Find Me On</h2>
-    <div class="buttons">
-      <a class="button" href="https://www.linkedin.com/in/saleh-al-hamzani-8059501b9/" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
-      <a class="button" href="https://www.artstation.com/exr" target="_blank"><i class="fa-brands fa-artstation"></i> ArtStation</a>
-      <a class="button" href="https://www.canva.com/design/DAGn6ZJ-xyw/HzmrG3lW3jcZ068LhV-pww/edit?utm_content=DAGn6ZJ-xyw&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" target="_blank"><i class="fa-solid fa-code"></i> Portfolio</a>
-      <a class="button" href="https://saleh-al-hamzain.itch.io/" target="_blank"><i class="fa-brands fa-itch-io"></i> Itch.io</a>
-      <a class="button" href="https://github.com/Saleh-Al-Hamzani" target="_blank"><i class="fab fa-github"></i> GitHub</a>
-      <a class="button" href="Saleh-Mutlaq-Al-Shammar CV.pdf" target="_blank" rel="noopener noreferrer">📄 View CV</a>
-    </div>
-  </div>
+        <!-- ==========================================================================
+             03 ABOUT + SKILLS — Production & Development
+             Styles: css/about.css
+             ========================================================================== -->
+        <section class="grid-container poster-section" id="about">
+            <div class="skills-wrapper">
+                <div class="about-header-group">
+                    <h2 class="display-text skills-statement reveal" data-i18n="about_stmt">
+                        I WORK ACROSS <span>PRODUCTION</span> AND <span>DEVELOPMENT.</span>
+                    </h2>
+                    <p class="about-sub reveal" data-i18n="about_sub">
+                        Combining production management with hands-on Unity programming and 3D technical art to build focused, playable game experiences.
+                    </p>
+                </div>
+                
+                <div class="skills-grid">
+                    <!-- 01 Development -->
+                    <div class="skill-col reveal">
+                        <div class="sc-title">
+                            <span>01</span>
+                            <span data-i18n="sk_1_title">DEVELOPMENT</span>
+                        </div>
+                        <ul class="sc-list">
+                            <li>Unity / C#</li>
+                            <li data-i18n="sk_1_1">Gameplay Programming</li>
+                            <li data-i18n="sk_1_2">UI/UX Implementation</li>
+                            <li data-i18n="sk_1_3">JSON Persistence</li>
+                            <li data-i18n="sk_1_4">Git / GitHub</li>
+                        </ul>
+                    </div>
+                    
+                    <!-- 02 Production -->
+                    <div class="skill-col reveal" style="transition-delay: 0.1s;">
+                        <div class="sc-title">
+                            <span>02</span>
+                            <span data-i18n="sk_2_title">PRODUCTION</span>
+                        </div>
+                        <ul class="sc-list">
+                            <li data-i18n="sk_2_1">Project Management</li>
+                            <li data-i18n="sk_2_2">Sprint Planning</li>
+                            <li data-i18n="sk_2_3">Cross-functional Coordination</li>
+                            <li data-i18n="sk_2_4">Public Pitching</li>
+                        </ul>
+                    </div>
+                    
+                    <!-- 03 Art -->
+                    <div class="skill-col reveal" style="transition-delay: 0.2s;">
+                        <div class="sc-title">
+                            <span>03</span>
+                            <span data-i18n="sk_3_title">ART</span>
+                        </div>
+                        <ul class="sc-list">
+                            <li data-i18n="sk_3_1">Autodesk Maya</li>
+                            <li data-i18n="sk_3_2">Substance Painter</li>
+                            <li data-i18n="sk_3_3">3D Environment Art</li>
+                        </ul>
+                    </div>
+                </div>
 
-  <div class="contact">
-    <h2>Contact Me</h2>
-    <p>Email: <a href="mailto:saleh520004@gmail.com">saleh520004@gmail.com</a></p>
-    <p>Phone: <a href="tel:966533482632">966533482632</a></p>
-  </div>
+                <!-- Education Background -->
+                <div class="edu-block reveal">
+                    <div class="edu-item">
+                        <h3 class="display-text edu-deg" data-i18n="edu_1_deg">Bachelor of Software Engineering</h3>
+                        <span class="edu-inst" data-i18n="edu_1_inst">University of Hail</span>
+                    </div>
+                    <div class="edu-item">
+                        <h3 class="display-text edu-deg" data-i18n="edu_2_deg">Game Development Bootcamp</h3>
+                        <span class="edu-inst" data-i18n="edu_2_inst">Saudi Digital Academy × Vertex School</span>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-  <!-- Visitor Counter -->
-  <div class="counter">
-    👥 You are visitor #<span id="visitor-count">Loading...</span>
-    <div id="error-message"></div>
-  </div>
-</div>
+        <!-- ==========================================================================
+             04 EXPERIENCE — Work Journey
+             Styles: css/experience.css
+             ========================================================================== -->
+        <section class="grid-container poster-section" id="experience">
+            <span class="section-title" data-i18n="sec_exp">EXPERIENCE</span>
+            
+            <div class="exp-journey">
+                <!-- 01 Aiqona Productions (Primary Studio Role) -->
+                <div class="exp-node primary-role">
+                    <div class="exp-content reveal">
+                        <span class="exp-year" data-i18n="exp_1_year">AUG 2025 — PRESENT</span>
+                        <h3 class="display-text exp-comp" data-i18n="exp_1_comp">Aiqona Productions</h3>
+                        <div class="meta-text exp-role" data-i18n="exp_1_role">Riyadh • Game Producer & Unity Developer</div>
+                        <ul class="exp-desc">
+                            <li data-i18n="exp_1_d1">Managed day-to-day production across programming, art, marketing, and finance.</li>
+                            <li data-i18n="exp_1_d2">Built gameplay systems, UI architecture, and JSON persistence in Unity/C#.</li>
+                            <li data-i18n="exp_1_d3">Represented Aiqona at Indie Games Day and gamescom, presenting playable builds to industry professionals.</li>
+                        </ul>
+                    </div>
+                    <div class="exp-visual clip-reveal">
+                        <div class="editorial-card">
+                            <div class="img-box">
+                                <img src="assets/aiqona-work.jpg" alt="Aiqona Productions Work">
+                            </div>
+                            <div class="cap" data-i18n="exp1_cap">Aiqona Productions — Sprint Board & Pipeline</div>
+                        </div>
+                    </div>
+                </div>
 
-<footer class="footer">
-  Saleh Al-Hamzani. All rights reserved.
-</footer>
+                <!-- 02 WNDR Group (Internship) -->
+                <div class="exp-node">
+                    <div class="exp-content reveal">
+                        <span class="exp-year" data-i18n="exp_2_year">2025</span>
+                        <h3 class="display-text exp-comp" data-i18n="exp_2_comp">WNDR Group</h3>
+                        <div class="meta-text exp-role" data-i18n="exp_2_role">Riyadh • Game Development Intern</div>
+                        <ul class="exp-desc">
+                            <li data-i18n="exp_2_d1">Developed gameplay features and UI elements using Unity and C#.</li>
+                            <li data-i18n="exp_2_d2">Implemented enemy pathfinding and navigation with NavMesh.</li>
+                            <li data-i18n="exp_2_d3">Assisted with multiplayer integration and Steam functionality.</li>
+                        </ul>
+                    </div>
+                    <div class="exp-visual clip-reveal">
+                        <div class="editorial-card">
+                            <div class="img-box">
+                                <img src="assets/wndr-work.jpg" alt="WNDR Group Work">
+                            </div>
+                            <div class="cap" data-i18n="exp2_cap">WNDR Group — NavMesh AI & Networking</div>
+                        </div>
+                    </div>
+                </div>
 
-<!-- Counter API Script -->
-<script src="https://cdn.jsdelivr.net/npm/counterapi/dist/counter.browser.min.js"></script>
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const countElement = document.getElementById('visitor-count');
-    const errorElement = document.getElementById('error-message');
+                <!-- 03 Independent (Freelance 3D Artist) -->
+                <div class="exp-node tertiary-role">
+                    <div class="exp-content reveal">
+                        <span class="exp-year" data-i18n="exp_3_year">2021 — 2023</span>
+                        <h3 class="display-text exp-comp" data-i18n="exp_3_comp">Independent</h3>
+                        <div class="meta-text exp-role" data-i18n="exp_3_role">Freelance 3D Artist</div>
+                        <ul class="exp-desc">
+                            <li data-i18n="exp_3_d1">Modeled, textured, and prepared game-ready 3D assets for independent projects.</li>
+                            <li data-i18n="exp_3_d2">Collaborated with peers and clients to deliver optimized 3D game models.</li>
+                        </ul>
+                    </div>
+                    <div class="exp-visual clip-reveal">
+                        <div class="editorial-card">
+                            <div class="img-box">
+                                <img id="freelance-slide-img" src="assets/freelancer work/1.jpg" alt="Freelance 3D Art — 3D Portfolio">
+                            </div>
+                            <div class="card-carousel-nav" id="freelanceCarouselNav">
+                                <button type="button" class="carousel-dot active" data-slide="assets/freelancer work/1.jpg" aria-label="Page 1">01</button>
+                                <button type="button" class="carousel-dot" data-slide="assets/freelancer work/2.jpg" aria-label="Page 2">02</button>
+                                <button type="button" class="carousel-dot" data-slide="assets/freelancer work/3.jpg" aria-label="Page 3">03</button>
+                            </div>
+                            <div class="cap" data-i18n="exp3_cap">Autodesk Maya & Substance — Game-Ready 3D Assets</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-    function getFallbackCounter() {
-        let count = localStorage.getItem('fallbackVisitorCount');
-        if (!count) {
-            count = Math.floor(Math.random() * 100) + 50;
-        } else {
-            count = parseInt(count) + 1;
-        }
-        localStorage.setItem('fallbackVisitorCount', count);
-        return count;
-    }
+        <!-- ==========================================================================
+             05 GITHUB ACTIVITY — Dynamic Real GitHub Metrics via REST API
+             Styles: css/tech.css | Script: js/github.js
+             ========================================================================== -->
+        <section class="grid-container poster-section" id="github">
+            <span class="section-title" data-i18n="sec_tech">GITHUB ACTIVITY</span>
+            
+            <div class="tech-poster reveal">
+                <div class="tech-header">
+                    <span data-i18n="tech_header_title">GITHUB REPOSITORY METRICS</span>
+                    <a href="https://github.com/Saleh-Al-Hamzani" target="_blank" rel="noopener noreferrer">GITHUB.COM/SALEH-AL-HAMZANI ↗</a>
+                </div>
 
-    try {
-        const counter = new Counter({ workspace: 'about-me-saleh-exr' });
-        counter.up('visitors_salehs')
-            .then(result => {
-                if (result && typeof result.value !== 'undefined') {
-                    countElement.textContent = result.value;
-                } else {
-                    throw new Error('Invalid response from Counter API');
-                }
-            })
-            .catch(err => {
-                console.error('Counter API error:', err);
-                //errorElement.textContent = "API failed. Using fallback counter.";
-                countElement.textContent = getFallbackCounter();
-            });
-    } catch (err) {
-        console.error('Counter initialization error:', err);
-        //errorElement.textContent = "Counter initialization failed. Using fallback counter.";
-        countElement.textContent = getFallbackCounter();
-    }
-});
-</script>
+                <!-- Dynamic Summary Counter Pills (Populated from GitHub API) -->
+                <div class="tech-summary-grid">
+                    <div class="ts-item">
+                        <span class="ts-label" data-i18n="tech_repos_count">PUBLIC REPOSITORIES</span>
+                        <span class="ts-val" id="gh-public-repos"><span class="gh-skeleton">...</span></span>
+                    </div>
+                    <div class="ts-item">
+                        <span class="ts-label" data-i18n="tech_stars_count">TOTAL STARS</span>
+                        <span class="ts-val" id="gh-total-stars"><span class="gh-skeleton">...</span></span>
+                    </div>
+                    <div class="ts-item">
+                        <span class="ts-label" data-i18n="tech_followers_count">FOLLOWERS</span>
+                        <span class="ts-val" id="gh-followers"><span class="gh-skeleton">...</span></span>
+                    </div>
+                    <div class="ts-item">
+                        <span class="ts-label" data-i18n="tech_active_since">ACTIVE SINCE</span>
+                        <span class="ts-val" id="gh-active-since"><span class="gh-skeleton">...</span></span>
+                    </div>
+                </div>
+
+                <div class="tech-grid">
+                    <!-- Column 1: Dynamically Loaded Public Repositories -->
+                    <div class="tech-card">
+                        <div class="tc-header">
+                            <span class="meta-text" data-i18n="tech_public_repos">PUBLIC REPOSITORIES</span>
+                            <a href="https://github.com/Saleh-Al-Hamzani?tab=repositories" target="_blank" rel="noopener noreferrer" class="tc-link" data-i18n="tech_view_all">VIEW ALL ↗</a>
+                        </div>
+                        <div class="gh-repo-list" id="gh-repo-list">
+                            <!-- Populated dynamically via GitHub REST API -->
+                            <div class="gh-state-box gh-loading-state">
+                                <i class="fa-solid fa-circle-notch fa-spin"></i>
+                                <span data-i18n="tech_loading">Fetching live repositories from GitHub API...</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Column 2: Dynamically Calculated Language Distribution & Studio NDA Notice -->
+                    <div class="tech-card">
+                        <div class="tc-header">
+                            <span class="meta-text" data-i18n="tech_lang_dist">LANGUAGE DISTRIBUTION</span>
+                            <span class="tc-sub" data-i18n="tech_by_bytes">BY CODEBASE BYTES</span>
+                        </div>
+                        <div class="gh-langs-container">
+                            <div class="gh-lang-progress-bar" id="gh-lang-progress-bar">
+                                <span class="gh-bar-segment gh-bar-loading" style="width: 100%;"></span>
+                            </div>
+
+                            <div class="gh-lang-breakdown" id="gh-lang-breakdown">
+                                <!-- Populated dynamically via languages_url byte aggregation -->
+                                <div class="gh-state-box gh-loading-state">
+                                    <i class="fa-solid fa-circle-notch fa-spin"></i>
+                                    <span data-i18n="tech_loading_langs">Calculating codebase byte distribution...</span>
+                                </div>
+                            </div>
+
+                            <div class="gh-note-box">
+                                <i class="fa-solid fa-lock"></i>
+                                <span data-i18n="tech_private_note">Commercial game projects (Pizza Knight, While He Seeks, WNDR Group deliverables) are hosted under private organizational repositories under NDA.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================================================
+             06 OTHER PROJECTS — Lightweight Archive
+             Styles: css/archive.css
+             ========================================================================== -->
+        <section class="grid-container poster-section" id="archive">
+            <span class="section-title" data-i18n="sec_arch">OTHER PROJECTS</span>
+            
+            <div class="archive-sequence">
+                <!-- Project 1 — While He Seeks -->
+                <div class="proj-poster pp-1">
+                    <div class="pp-content reveal">
+                        <span class="pp-meta" data-i18n="p1_meta">MULTIPLAYER PROTOTYPE</span>
+                        <h3 class="display-text pp-title" data-i18n="p1_title">While He Seeks</h3>
+                        <p class="pp-desc" data-i18n="p1_desc">Built multiplayer gameplay systems with networking and Steam-connected features inside Unity.</p>
+                        <span class="pp-tech-badge">UNITY / FISHNET / STEAM API</span>
+                    </div>
+                    <div class="pp-visual clip-reveal">
+                        <div class="lightweight-card">
+                            <div class="img-box">
+                                <img src="assets/while-he-seeks.jpg" alt="While He Seeks">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2 — Sari Game -->
+                <div class="proj-poster pp-2">
+                    <div class="pp-visual clip-reveal">
+                        <div class="lightweight-card">
+                            <div class="img-box">
+                                <img src="assets/sari-game.jpg" alt="Sari Game">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pp-content reveal">
+                        <span class="pp-meta" data-i18n="p2_meta">SOLO DEVELOPMENT</span>
+                        <h3 class="display-text pp-title" data-i18n="p2_title">Sari Game</h3>
+                        <p class="pp-desc" data-i18n="p2_desc">Handled design, code, art direction, and implementation as a compact self-driven Unity project.</p>
+                        <span class="pp-tech-badge">UNITY / 3D MODELING / SOLO DEV</span>
+                    </div>
+                </div>
+
+                <!-- Project 3 — The Cave -->
+                <div class="proj-poster pp-3">
+                    <div class="pp-content reveal">
+                        <span class="pp-meta" data-i18n="p3_meta">ENVIRONMENT ART</span>
+                        <h3 class="display-text pp-title" data-i18n="p3_title">The Cave</h3>
+                        <p class="pp-desc" data-i18n="p3_desc">A game-ready environment piece focused on visual quality, mood, and game-ready asset presentation.</p>
+                        <span class="pp-tech-badge">MAYA / SUBSTANCE PAINTER</span>
+                    </div>
+                    <div class="pp-visual clip-reveal">
+                        <div class="lightweight-card">
+                            <div class="img-box">
+                                <img src="assets/the-cave.jpg" alt="The Cave">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================================================
+             07 CONTACT — Open for Opportunities
+             Styles: css/contact.css
+             ========================================================================== -->
+        <section class="grid-container contact-frame" id="contact">
+            <h2 class="display-text contact-title reveal" data-i18n="contact_title">LET'S WORK<br>TOGETHER.</h2>
+            
+            <div class="contact-grid reveal">
+                <a href="mailto:saleh520004@gmail.com" class="contact-card">
+                    <span class="c-type"><span data-i18n="c_email">EMAIL</span> ↗</span>
+                    <span class="c-val">saleh520004@gmail.com</span>
+                </a>
+                <a href="tel:+966533482632" class="contact-card" dir="ltr">
+                    <span class="c-type"><span data-i18n="c_phone">PHONE</span> ↗</span>
+                    <span class="c-val">+966 53 348 2632</span>
+                </a>
+                <a href="https://www.linkedin.com/in/saleh-al-hamzani-8059501b9/" target="_blank" rel="noopener noreferrer" class="contact-card">
+                    <span class="c-type"><span data-i18n="c_in">LINKEDIN</span> ↗</span>
+                    <span class="c-val">/in/saleh-al-hamzani</span>
+                </a>
+                <a href="https://github.com/Saleh-Al-Hamzani" target="_blank" rel="noopener noreferrer" class="contact-card">
+                    <span class="c-type"><span data-i18n="c_gh">GITHUB</span> ↗</span>
+                    <span class="c-val">@Saleh-Al-Hamzani</span>
+                </a>
+                <a href="https://saleh-al-hamzain.itch.io/" target="_blank" rel="noopener noreferrer" class="contact-card">
+                    <span class="c-type"><span data-i18n="c_itch">ITCH.IO</span> ↗</span>
+                    <span class="c-val">saleh-al-hamzain</span>
+                </a>
+                <a href="https://www.artstation.com/exr" target="_blank" rel="noopener noreferrer" class="contact-card">
+                    <span class="c-type"><span data-i18n="c_art">ARTSTATION</span> ↗</span>
+                    <span class="c-val">artstation.com/exr</span>
+                </a>
+                <a href="SalehMutlaqAlShammariResume.pdf" target="_blank" rel="noopener noreferrer" class="contact-card highlight">
+                    <span class="c-type"><span data-i18n="c_cv">RESUME</span> <i class="fa-solid fa-file-arrow-down"></i></span>
+                    <span class="c-val">Download CV (PDF)</span>
+                </a>
+                <a href="https://www.canva.com/design/DAGn6ZJ-xyw/HzmrG3lW3jcZ068LhV-pww/edit?utm_content=DAGn6ZJ-xyw&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" target="_blank" rel="noopener noreferrer" class="contact-card highlight">
+                    <span class="c-type"><span data-i18n="c_portfolio">PORTFOLIO</span> <i class="fa-solid fa-code"></i></span>
+                    <span class="c-val" data-i18n="c_portfolio_val">Canva Presentation</span>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="f-brand">
+            <span class="f-name" data-i18n="f_name">Saleh Al-Shammari</span>
+            <span class="f-year" data-i18n="hero_role_small">GAME PRODUCER / UNITY DEVELOPER</span>
+        </div>
+        <div class="f-year">© 2026 • ALL RIGHTS RESERVED</div>
+    </footer>
+
+    <!-- Client-Side Scripts -->
+    <script src="js/translations.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/github.js"></script>
 </body>
 </html>

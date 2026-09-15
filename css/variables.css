@@ -1,0 +1,80 @@
+/* ==========================================================================
+   DESIGN SYSTEM & VARIABLES — REFINED STUDIO WORKBENCH
+   File: css/variables.css
+   Purpose: Warm tactile paper & carbon ink palette, typography, brutalist shadows, dark mode.
+   ========================================================================== */
+
+:root {
+    /* Primary Physical Paper & Carbon Ink Palette - Light */
+    --paper: #F5F1EB;
+    --paper-2: #EBE5DB;
+    --paper2: var(--paper-2);
+    --paper3: #DFD7CA;
+    --ink: #22201D;
+    --muted: #6B655C;
+    --card: #FFFFFF;
+
+    /* Semantic Accent Pigments */
+    --terra: #B85C43;
+    --ochre: #D98A2B;
+    --olive: #4E8A72;
+    --accent: var(--terra);
+    --accent2: var(--olive);
+    --accent3: #6C5B7B;
+
+    /* Hairline Rules */
+    --rule: rgba(34, 32, 29, 0.12);
+    --rule-strong: rgba(34, 32, 29, 0.28);
+
+    /* Backwards compatibility aliases */
+    --bg-base: var(--paper);
+    --bg-alt: var(--paper-2);
+    --text-main: var(--ink);
+    --text-muted: var(--muted);
+    --line-color: var(--rule);
+    --line-strong: var(--rule-strong);
+
+    /* Tactile Shadows & Brutalist Offsets */
+    --shadow-brutal: 4px 4px 0 var(--ink);
+    --shadow-soft: 0 8px 24px rgba(34, 32, 29, 0.06);
+    --shadow: 0 10px 30px rgba(34, 32, 29, 0.08);
+    --shadow2: 0 18px 45px rgba(34, 32, 29, 0.14);
+
+    /* Typography Hierarchy */
+    --font-disp: 'Playfair Display', Georgia, serif;
+    --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+
+    /* Spacing */
+    --pad-x: clamp(1.2rem, 5vw, 3.5rem);
+    --container-max: 1200px;
+}
+
+[data-theme='dark'] {
+    /* Studio at Night Palette — Deep Charcoal & Warm Terracotta */
+    --paper: #161514;
+    --paper-2: #1E1D1B;
+    --paper2: var(--paper-2);
+    --paper3: #272522;
+    --ink: #EDEAE4;
+    --muted: #9E978E;
+    --card: #1C1B19;
+
+    --terra: #D86F54;
+    --ochre: #E09A3E;
+    --olive: #5CA085;
+    --accent: var(--terra);
+
+    --rule: rgba(237, 234, 228, 0.12);
+    --rule-strong: rgba(237, 234, 228, 0.24);
+
+    --shadow-brutal: 4px 4px 0 #000000;
+    --shadow-soft: 0 8px 24px rgba(0, 0, 0, 0.35);
+    --shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    --shadow2: 0 18px 45px rgba(0, 0, 0, 0.55);
+}
+
+html[dir="rtl"] {
+    --font-disp: 'Amiri', 'Playfair Display', serif;
+    --font-body: 'Alexandria', 'Inter', sans-serif;
+}

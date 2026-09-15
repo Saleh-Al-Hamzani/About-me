@@ -1,0 +1,124 @@
+/* ==========================================================================
+   FEATURED PROJECT — PIZZA KNIGHT (CENTERPIECE SHOWCASE)
+   File: css/featured.css
+   Purpose: Primary game project centerpiece with signature framing and clear contributions.
+   ========================================================================== */
+
+#featured {
+    position: relative;
+}
+
+.feat-layout {
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 4vw;
+    align-items: center;
+}
+
+/* Primary Visual — Signature Showcase */
+.feat-visual {
+    width: 100%;
+}
+
+.feat-visual .signature-card,
+.feat-visual .studio-card {
+    padding: 0.85rem;
+}
+
+.feat-visual .img-box {
+    aspect-ratio: 16 / 10;
+    width: 100%;
+    background: #140f22;
+    border: 1px solid var(--rule);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.feat-visual img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+}
+
+/* Title & Content Block */
+.feat-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+.feat-title {
+    font-size: clamp(2.4rem, 4vw, 4.2rem);
+    line-height: 0.95;
+    letter-spacing: -0.03em;
+    color: var(--ink);
+}
+
+.feat-title span {
+    font-size: 0.35em !important;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    display: block;
+    margin-top: 0.6rem;
+    color: var(--muted);
+    font-family: var(--font-mono);
+    font-weight: 600;
+}
+
+.feat-roles {
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    color: var(--terra);
+    display: block;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.feat-desc {
+    font-size: 0.98rem;
+    line-height: 1.75;
+    color: var(--ink);
+}
+
+.feat-bullets {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    padding-top: 1.2rem;
+    border-top: 1px solid var(--rule);
+    list-style: none;
+    counter-reset: feat-counter;
+}
+
+.feat-bullets li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.85rem;
+    font-size: 0.86rem;
+    line-height: 1.55;
+    letter-spacing: 0.01em;
+    color: var(--ink);
+}
+
+.feat-bullets li::before {
+    content: '0' counter(feat-counter);
+    counter-increment: feat-counter;
+    font-family: var(--font-mono);
+    color: var(--terra);
+    font-weight: 700;
+    font-size: 0.72rem;
+    margin-top: 0.15rem;
+}
+
+/* --------------------------------------------------------------------------
+   RESPONSIVE
+   -------------------------------------------------------------------------- */
+@media (max-width: 960px) {
+    .feat-layout {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+    }
+}

@@ -1,0 +1,157 @@
+/* ==========================================================================
+   ABOUT & SKILLS — 3 PRODUCTION DISCIPLINE COLUMNS
+   File: css/about.css
+   Purpose: Clear statement, 3 discipline columns, and clean education background.
+   ========================================================================== */
+
+#about {
+    position: relative;
+}
+
+.skills-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+
+/* Philosophy Statement & Subtitle */
+.about-header-group {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-width: 900px;
+}
+
+.skills-statement {
+    font-size: clamp(2rem, 3.4vw, 3.4rem);
+    line-height: 1.15;
+    color: var(--muted);
+    font-weight: 400;
+    letter-spacing: -0.025em;
+}
+
+.skills-statement span {
+    color: var(--ink);
+    font-weight: 600;
+}
+
+.about-sub {
+    font-size: clamp(1rem, 1.25vw, 1.15rem);
+    line-height: 1.7;
+    color: var(--ink);
+}
+
+/* 3 Studio Discipline Columns */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+}
+
+.skill-col {
+    background: var(--paper-2);
+    border: 1.5px solid var(--ink);
+    box-shadow: var(--shadow-brutal);
+    padding: 1.8rem 1.6rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.skill-col:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0 var(--ink);
+}
+
+.sc-title {
+    font-family: var(--font-mono);
+    font-size: 0.74rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    color: var(--ink);
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    border-bottom: 1.5px solid var(--ink);
+    padding-bottom: 0.75rem;
+}
+
+.sc-title span:first-child {
+    color: var(--terra);
+}
+
+.sc-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+    font-size: 0.9rem;
+    list-style: none;
+}
+
+.sc-list li {
+    line-height: 1.45;
+    color: var(--ink);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.sc-list li::before {
+    content: '→';
+    color: var(--terra);
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+}
+
+html[dir="rtl"] .sc-list li::before {
+    content: '←';
+}
+
+/* Education List (Clean Two-Item Presentation) */
+.edu-block {
+    margin-top: 0.5rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    position: relative;
+    padding-top: 1.8rem;
+    border-top: 1px solid var(--rule);
+}
+
+.edu-item {
+    background: var(--paper-2);
+    border: 1.5px solid var(--ink);
+    box-shadow: 3px 3px 0 var(--ink);
+    padding: 1.4rem 1.6rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+}
+
+.edu-deg {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--ink);
+    margin: 0;
+}
+
+.edu-inst {
+    color: var(--muted);
+    font-size: 0.86rem;
+}
+
+/* --------------------------------------------------------------------------
+   RESPONSIVE
+   -------------------------------------------------------------------------- */
+@media (max-width: 900px) {
+    .skills-grid {
+        grid-template-columns: 1fr;
+        gap: 1.2rem;
+    }
+
+    .edu-block {
+        grid-template-columns: 1fr;
+        gap: 1.2rem;
+    }
+}

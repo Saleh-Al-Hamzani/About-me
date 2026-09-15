@@ -1,0 +1,138 @@
+/* ==========================================================================
+   CONTACT & FOOTER — STUDIO IDENTITY
+   File: css/contact.css
+   Purpose: Final studio contact screen, interactive card grid, and minimal footer.
+   ========================================================================== */
+
+.contact-frame {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    text-align: left;
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+    position: relative;
+}
+
+html[dir="rtl"] .contact-frame {
+    text-align: right;
+    align-items: flex-start;
+}
+
+.contact-title {
+    font-size: clamp(2.8rem, 5.5vw, 5rem);
+    line-height: 0.95;
+    letter-spacing: -0.04em;
+    margin-bottom: 3.5rem;
+    color: var(--ink);
+}
+
+/* Tactile Studio Contact Grid */
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.2rem;
+    width: 100%;
+    margin-bottom: 3rem;
+}
+
+.contact-card {
+    background: var(--paper-2);
+    border: 1.5px solid var(--ink);
+    box-shadow: var(--shadow-brutal);
+    padding: 1.4rem 1.6rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    text-decoration: none;
+    color: var(--ink);
+    transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+    position: relative;
+}
+
+.contact-card:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0 var(--ink);
+    border-color: var(--terra);
+}
+
+.c-type {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+    color: var(--muted);
+    text-transform: uppercase;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.c-val {
+    font-size: 0.98rem;
+    font-weight: 600;
+    color: var(--ink);
+}
+
+.contact-card.highlight {
+    background: var(--terra);
+    border-color: var(--ink);
+}
+
+.contact-card.highlight .c-type,
+.contact-card.highlight .c-val {
+    color: #ffffff;
+}
+
+/* ==========================================================================
+   MINIMAL FOOTER
+   ========================================================================== */
+.footer {
+    padding: 2.5rem var(--pad-x);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1.5px solid var(--ink);
+    background: var(--paper);
+    width: 100%;
+}
+
+.f-brand {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.f-name {
+    font-family: var(--font-disp);
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    color: var(--ink);
+}
+
+.f-year {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+}
+
+/* --------------------------------------------------------------------------
+   RESPONSIVE
+   -------------------------------------------------------------------------- */
+@media (max-width: 700px) {
+    .contact-title {
+        margin-bottom: 2.5rem;
+    }
+
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .footer {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1.5rem;
+    }
+}

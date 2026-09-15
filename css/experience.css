@@ -1,0 +1,219 @@
+/* ==========================================================================
+   EXPERIENCE — PRODUCTION RECORD
+   File: css/experience.css
+   Purpose: Differentiated visual hierarchy (Aiqona dominant, WNDR secondary, 3D tertiary).
+   ========================================================================== */
+
+#experience {
+    position: relative;
+}
+
+.exp-journey {
+    display: flex;
+    flex-direction: column;
+    gap: 5.5rem;
+}
+
+.exp-node {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4vw;
+    align-items: center;
+    position: relative;
+}
+
+/* Odd Milestones: Content Left, Visual Right */
+.exp-node:nth-child(odd) .exp-content {
+    grid-column: 1;
+    grid-row: 1;
+}
+
+.exp-node:nth-child(odd) .exp-visual {
+    grid-column: 2;
+    grid-row: 1;
+}
+
+/* Even Milestones: Visual Left, Content Right */
+.exp-node:nth-child(even) .exp-content {
+    grid-column: 2;
+    grid-row: 1;
+}
+
+.exp-node:nth-child(even) .exp-visual {
+    grid-column: 1;
+    grid-row: 1;
+}
+
+/* Content Details */
+.exp-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+}
+
+.exp-year {
+    font-family: var(--font-mono);
+    font-size: 0.74rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    color: var(--terra);
+    display: inline-block;
+}
+
+.exp-comp {
+    font-size: clamp(1.8rem, 2.8vw, 2.8rem);
+    line-height: 1.1;
+    letter-spacing: -0.025em;
+    color: var(--ink);
+}
+
+.exp-role {
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    font-weight: 500;
+}
+
+.exp-desc {
+    font-size: 0.94rem;
+    line-height: 1.7;
+    color: var(--ink);
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    list-style: none;
+    margin-top: 0.5rem;
+}
+
+.exp-desc li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
+}
+
+.exp-desc li::before {
+    content: '—';
+    color: var(--terra);
+    font-weight: 700;
+    margin-right: 0.2rem;
+}
+
+html[dir="rtl"] .exp-desc li::before {
+    margin-right: 0;
+    margin-left: 0.2rem;
+}
+
+/* Visuals: Editorial Cards */
+.exp-visual .editorial-card,
+.exp-visual .studio-card {
+    padding: 0.8rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.exp-visual .img-box {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    background: #11100f;
+    border: 1px solid var(--rule);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.exp-visual img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+}
+
+.exp-visual .cap {
+    margin-top: 0.8rem;
+    font-size: 0.65rem;
+}
+
+.card-carousel-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 0.75rem;
+}
+
+.carousel-dot {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    font-weight: 600;
+    padding: 0.25rem 0.65rem;
+    border: 1px solid var(--rule-strong);
+    background: var(--paper-2);
+    color: var(--muted);
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.carousel-dot:hover {
+    border-color: var(--terra);
+    color: var(--terra);
+}
+
+.carousel-dot.active {
+    background: var(--terra);
+    border-color: var(--terra);
+    color: #ffffff;
+}
+
+
+/* --------------------------------------------------------------------------
+   HIERARCHY DIFFERENTIATION
+   -------------------------------------------------------------------------- */
+/* Aiqona (Primary Role) — Dominant presence */
+.exp-node.primary-role {
+    border-bottom: 1px dashed var(--rule);
+    padding-bottom: 4rem;
+}
+
+.exp-node.primary-role .exp-comp {
+    font-size: clamp(2.2rem, 3.4vw, 3.4rem);
+}
+
+/* Freelance 3D (Tertiary Role) — Understated format */
+.exp-node.tertiary-role {
+    opacity: 0.92;
+}
+
+.exp-node.tertiary-role .exp-comp {
+    font-size: clamp(1.6rem, 2.3vw, 2.3rem);
+}
+
+/* --------------------------------------------------------------------------
+   RESPONSIVE
+   -------------------------------------------------------------------------- */
+@media (max-width: 900px) {
+    .exp-journey {
+        gap: 3.5rem;
+    }
+
+    .exp-node,
+    .exp-node:nth-child(even) {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .exp-node .exp-content,
+    .exp-node:nth-child(even) .exp-content {
+        grid-column: 1;
+        grid-row: auto;
+        order: 2;
+    }
+
+    .exp-node .exp-visual,
+    .exp-node:nth-child(even) .exp-visual {
+        grid-column: 1;
+        grid-row: auto;
+        order: 1;
+    }
+}
