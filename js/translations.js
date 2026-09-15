@@ -30,6 +30,7 @@ const dict = {
         feat_b2: 'Gameplay systems and UI implementation in Unity/C#',
         feat_b3: 'JSON persistence implementation',
         feat_b4: '3D integration and public pitching at industry events',
+        feat_btn_steam: 'View on Steam',
 
         about_stmt: 'I WORK ACROSS <span>PRODUCTION</span> AND <span>DEVELOPMENT.</span>',
         about_sub: 'Combining production management with hands-on Unity programming and 3D technical art to build focused, playable game experiences.',
@@ -144,6 +145,7 @@ const dict = {
         feat_b2: 'برمجة أنظمة اللعب وواجهة المستخدم في Unity/C#',
         feat_b3: 'تنفيذ بنية حفظ البيانات عبر JSON',
         feat_b4: 'دمج المجسمات ثلاثية الأبعاد وعرض المشروع أمام الجمهور والمحترفين في الفعاليات',
+        feat_btn_steam: 'مشاهدة اللعبة على Steam',
 
         about_stmt: 'أعمل في مجالي <span>الإنتاج</span> و<span>التطوير.</span>',
         about_sub: 'الجمع بين إدارة الإنتاج والبرمجة العملية في Unity والفن التقني ثلاثي الأبعاد لبناء تجارب ألعاب متقنة وقابلة للعب.',

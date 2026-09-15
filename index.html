@@ -16,6 +16,47 @@
 
     <!-- Master Stylesheet -->
     <link rel="stylesheet" href="css/style.css">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="Profile Image.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="Profile Image.ico">
+
+    <!-- Early Language & Theme Initializer (Avoids FOUC / Direction Flash) -->
+    <script>
+        (function() {
+            try {
+                const urlParams = new URLSearchParams(window.location.search);
+                const urlLang = urlParams.get('lang');
+                const savedManualLang = localStorage.getItem('user_lang_manual');
+                let lang = 'en';
+
+                if (urlLang === 'ar' || urlLang === 'en') {
+                    lang = urlLang;
+                } else if (savedManualLang === 'ar' || savedManualLang === 'en') {
+                    lang = savedManualLang;
+                } else {
+                    const browserLangs = (navigator.languages && navigator.languages.length)
+                        ? navigator.languages
+                        : [navigator.language || navigator.userLanguage || ''];
+                    const isArabic = browserLangs.some(l => l && l.toLowerCase().startsWith('ar'));
+                    lang = isArabic ? 'ar' : 'en';
+                }
+
+                if (lang === 'ar') {
+                    document.documentElement.lang = 'ar';
+                    document.documentElement.dir = 'rtl';
+                } else {
+                    document.documentElement.lang = 'en';
+                    document.documentElement.dir = 'ltr';
+                }
+
+                const savedTheme = localStorage.getItem('theme');
+                if (savedTheme) {
+                    document.documentElement.dataset.theme = savedTheme;
+                }
+            } catch(e) {}
+        })();
+    </script>
 </head>
 <body>
 
@@ -45,7 +86,7 @@
         </div>
         
         <div class="nav-controls">
-            <button class="ctrl-btn" id="langToggle" aria-label="Switch Language">EN / AR</button>
+            <button class="ctrl-btn" id="langToggle" aria-label="Switch Language">EN / عر</button>
             <button class="ctrl-btn" id="themeToggle" aria-label="Toggle Theme"><i class="fa-solid fa-circle-half-stroke"></i></button>
             <button class="ctrl-btn mobile-menu-btn" id="mobileMenuBtn" aria-label="Open Menu">MENU</button>
         </div>
@@ -102,9 +143,9 @@
                         <span class="p-plus tr">+</span>
                         <span class="p-plus bl">+</span>
                         <span class="p-plus br">+</span>
-                        <div class="img-box">
+                        <a href="https://store.steampowered.com/app/4122640/Pizza_Knight_Out_To_Deliver/" target="_blank" rel="noopener noreferrer" class="img-box" aria-label="View Pizza Knight on Steam">
                             <img src="assets/pizza-knight-hero.jpg" alt="Pizza Knight Gameplay Banner">
-                        </div>
+                        </a>
                     </div>
                 </div>
                 
@@ -120,6 +161,14 @@
                         <li data-i18n="feat_b3">JSON persistence implementation</li>
                         <li data-i18n="feat_b4">3D integration and public pitching at industry events</li>
                     </ul>
+
+                    <div class="feat-actions">
+                        <a href="https://store.steampowered.com/app/4122640/Pizza_Knight_Out_To_Deliver/" target="_blank" rel="noopener noreferrer" class="btn-primary feat-steam-btn">
+                            <i class="fa-brands fa-steam"></i>
+                            <span data-i18n="feat_btn_steam">View on Steam</span>
+                            <i class="fa-solid fa-arrow-up-right-from-square feat-external-icon"></i>
+                        </a>
+                    </div>
                 </div>
             </div>
         </section>

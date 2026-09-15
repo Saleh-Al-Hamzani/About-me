@@ -9,11 +9,33 @@
 let currentLang = 'en';
 let currentTheme = 'light';
 
+function detectBrowserLanguage() {
+    const browserLangs = (navigator.languages && navigator.languages.length)
+        ? navigator.languages
+        : [navigator.language || navigator.userLanguage || ''];
+
+    const isArabic = browserLangs.some(l => l && l.toLowerCase().startsWith('ar'));
+    return isArabic ? 'ar' : 'en';
+}
+
 function init() {
-    // Load saved preferences if available
-    const savedLang = localStorage.getItem('lang');
+    // 1. URL parameter override (?lang=ar or ?lang=en)
+    const urlParams = new URLSearchParams(window.location.search);
+    const urlLang = urlParams.get('lang');
+
+    // 2. Saved user preference (when user explicitly clicked language toggle)
+    const savedManualLang = localStorage.getItem('user_lang_manual');
     const savedTheme = localStorage.getItem('theme');
-    if (savedLang) currentLang = savedLang;
+
+    if (urlLang === 'ar' || urlLang === 'en') {
+        currentLang = urlLang;
+    } else if (savedManualLang === 'ar' || savedManualLang === 'en') {
+        currentLang = savedManualLang;
+    } else {
+        // 3. Auto-detect from browser languages
+        currentLang = detectBrowserLanguage();
+    }
+
     if (savedTheme) currentTheme = savedTheme;
 
     applyTheme(currentTheme);
@@ -27,6 +49,7 @@ function init() {
     if (langToggleBtn) {
         langToggleBtn.addEventListener('click', () => {
             currentLang = currentLang === 'en' ? 'ar' : 'en';
+            localStorage.setItem('user_lang_manual', currentLang);
             localStorage.setItem('lang', currentLang);
             applyLang(currentLang);
         });
@@ -73,7 +96,8 @@ function applyLang(lang) {
     
     const langToggleBtn = document.getElementById('langToggle');
     if (langToggleBtn) {
-        langToggleBtn.textContent = lang === 'en' ? 'EN / AR' : 'عربي / EN';
+        langToggleBtn.textContent = 'EN / عر';
+        langToggleBtn.setAttribute('aria-label', lang === 'en' ? 'Switch Language to Arabic' : 'Switch Language to English');
     }
     
     if (typeof dict !== 'undefined' && dict[lang]) {

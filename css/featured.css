@@ -113,6 +113,49 @@
     margin-top: 0.15rem;
 }
 
+/* Actions */
+.feat-actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding-top: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.feat-steam-btn {
+    text-decoration: none;
+}
+
+.feat-steam-btn .fa-steam {
+    font-size: 1.1rem;
+}
+
+.feat-external-icon {
+    font-size: 0.68rem;
+    opacity: 0.8;
+    transition: transform 0.15s ease;
+}
+
+.feat-steam-btn:hover .feat-external-icon {
+    transform: translate(2px, -2px);
+}
+
+html[dir="rtl"] .feat-steam-btn:hover .feat-external-icon {
+    transform: translate(-2px, -2px);
+}
+
+.feat-visual .img-box {
+    text-decoration: none;
+}
+
+.feat-visual .img-box img {
+    transition: transform 0.4s ease;
+}
+
+.feat-visual .img-box:hover img {
+    transform: scale(1.025);
+}
+
 /* --------------------------------------------------------------------------
    RESPONSIVE
    -------------------------------------------------------------------------- */
