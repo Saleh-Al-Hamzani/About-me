@@ -17,7 +17,7 @@ const dict = {
 
         hero_role_small: 'GAME PRODUCER / UNITY DEVELOPER',
         hero_n1: 'SALEH',
-        hero_n2: 'MUTLAQ AL-SHAMMARI',
+        hero_n2: 'MUTLAQ Al-Hamzani',
         hero_bio: 'I work across game production and Unity development — from planning and team coordination to gameplay systems and implementation.',
         btn_work: 'View Featured Work',
         btn_resume: 'Download Resume',
@@ -118,7 +118,7 @@ const dict = {
         c_cv: 'RESUME',
         c_portfolio: 'PORTFOLIO',
         c_portfolio_val: 'Art Portfolio',
-        f_name: 'Saleh Al-Shammari'
+        f_name: 'Saleh Al-Hamzani'
     },
     ar: {
         nav_work: 'الأعمال',
@@ -132,7 +132,7 @@ const dict = {
 
         hero_role_small: 'منتج ألعاب / مطور يونتي',
         hero_n1: 'صالح',
-        hero_n2: 'مطلق الشمري',
+        hero_n2: 'مطلق الهمزاني',
         hero_bio: 'أعمل في إنتاج الألعاب وتطويرها باستخدام Unity — بدءاً من التخطيط والتنسيق بين الفرق وحتى بناء أنظمة اللعب والتنفيذ.',
         btn_work: 'شاهد أبرز الأعمال',
         btn_resume: 'تحميل السيرة الذاتية',
@@ -233,7 +233,7 @@ const dict = {
         c_cv: 'السيرة الذاتية',
         c_portfolio: 'معرض الأعمال',
         c_portfolio_val: 'ملف الاعمال الفنية',
-        f_name: 'صالح الشمري'
+        f_name: 'صالح الهمزاني'
     }
 };
 
