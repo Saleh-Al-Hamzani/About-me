@@ -198,22 +198,27 @@ html[dir="rtl"] .exp-desc li::before {
     }
 
     .exp-node,
+    .exp-node:nth-child(odd),
     .exp-node:nth-child(even) {
-        grid-template-columns: 1fr;
+        grid-template-columns: minmax(0, 1fr);
         gap: 2rem;
+        min-width: 0;
+        width: 100%;
     }
 
     .exp-node .exp-content,
-    .exp-node:nth-child(even) .exp-content {
-        grid-column: 1;
+    .exp-node:nth-child(odd) .exp-content,
+    .exp-node:nth-child(even) .exp-content,
+    .exp-node .exp-visual,
+    .exp-node:nth-child(odd) .exp-visual,
+    .exp-node:nth-child(even) .exp-visual {
+        grid-column: 1 / -1;
         grid-row: auto;
-        order: 2;
+        min-width: 0;
+        width: 100%;
+        max-width: 100%;
     }
 
-    .exp-node .exp-visual,
-    .exp-node:nth-child(even) .exp-visual {
-        grid-column: 1;
-        grid-row: auto;
-        order: 1;
-    }
+    .exp-node .exp-visual { order: 1; }
+    .exp-node .exp-content { order: 2; }
 }

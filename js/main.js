@@ -24,8 +24,9 @@ function init() {
     const urlLang = urlParams.get('lang');
 
     // 2. Saved user preference (when user explicitly clicked language toggle)
-    const savedManualLang = localStorage.getItem('user_lang_manual');
-    const savedTheme = localStorage.getItem('theme');
+    // Storage can be unavailable in some mobile/private browsing contexts.
+    const savedManualLang = safeStorageGet('user_lang_manual');
+    const savedTheme = safeStorageGet('theme');
 
     if (urlLang === 'ar' || urlLang === 'en') {
         currentLang = urlLang;
@@ -36,7 +37,7 @@ function init() {
         currentLang = detectBrowserLanguage();
     }
 
-    if (savedTheme) currentTheme = savedTheme;
+    if (savedTheme === 'light' || savedTheme === 'dark') currentTheme = savedTheme;
 
     applyTheme(currentTheme);
     applyLang(currentLang);
@@ -49,9 +50,9 @@ function init() {
     if (langToggleBtn) {
         langToggleBtn.addEventListener('click', () => {
             currentLang = currentLang === 'en' ? 'ar' : 'en';
-            localStorage.setItem('user_lang_manual', currentLang);
-            localStorage.setItem('lang', currentLang);
             applyLang(currentLang);
+            safeStorageSet('user_lang_manual', currentLang);
+            safeStorageSet('lang', currentLang);
         });
     }
 
@@ -59,8 +60,9 @@ function init() {
     if (themeToggleBtn) {
         themeToggleBtn.addEventListener('click', () => {
             currentTheme = currentTheme === 'light' ? 'dark' : 'light';
-            localStorage.setItem('theme', currentTheme);
+            // Update the visible page first; persistence should never block the click.
             applyTheme(currentTheme);
+            safeStorageSet('theme', currentTheme);
         });
     }
 
@@ -116,7 +118,43 @@ function applyLang(lang) {
 }
 
 function applyTheme(theme) {
-    document.documentElement.dataset.theme = theme;
+    const normalizedTheme = theme === 'dark' ? 'dark' : 'light';
+    const root = document.documentElement;
+
+    // data-theme drives the site's CSS custom properties and theme selectors.
+    root.setAttribute('data-theme', normalizedTheme);
+    root.style.colorScheme = normalizedTheme;
+
+    // Explicitly keep the page canvas tied to the variables so the change is immediate.
+    if (document.body) {
+        document.body.style.backgroundColor = 'var(--paper)';
+        document.body.style.color = 'var(--ink)';
+    }
+
+    const themeToggleBtn = document.getElementById('themeToggle');
+    if (themeToggleBtn) {
+        themeToggleBtn.setAttribute('aria-pressed', normalizedTheme === 'dark' ? 'true' : 'false');
+        themeToggleBtn.setAttribute(
+            'aria-label',
+            normalizedTheme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'
+        );
+    }
+}
+
+function safeStorageGet(key) {
+    try {
+        return localStorage.getItem(key);
+    } catch (error) {
+        return null;
+    }
+}
+
+function safeStorageSet(key, value) {
+    try {
+        localStorage.setItem(key, value);
+    } catch (error) {
+        // The current page still works if storage is blocked; only persistence is skipped.
+    }
 }
 
 // ==========================================

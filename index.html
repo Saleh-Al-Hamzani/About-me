@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
     <!-- Master Stylesheet -->
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.css?v=mobile-theme-fix-20261009">
 
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="Profile Image.ico">
@@ -275,7 +275,7 @@
             .img-box img {
                 display: block;
                 max-width: 100%;
-                object-fit: cover;
+                height: auto;
             }
 
             .tech-header,
@@ -341,6 +341,52 @@
             .feat-steam-btn {
                 max-width: 100%;
                 white-space: normal;
+            }
+        }
+
+        /* Reset the desktop grid coordinates on every experience item when stacked. */
+        @media (max-width: 900px) {
+            .exp-node,
+            .exp-node:nth-child(odd),
+            .exp-node:nth-child(even) {
+                grid-template-columns: minmax(0, 1fr);
+                min-width: 0;
+                width: 100%;
+            }
+
+            .exp-node .exp-content,
+            .exp-node:nth-child(odd) .exp-content,
+            .exp-node:nth-child(even) .exp-content,
+            .exp-node .exp-visual,
+            .exp-node:nth-child(odd) .exp-visual,
+            .exp-node:nth-child(even) .exp-visual {
+                grid-column: 1 / -1;
+                grid-row: auto;
+                min-width: 0;
+                width: 100%;
+                max-width: 100%;
+            }
+
+            .exp-node .exp-visual { order: 1; }
+            .exp-node .exp-content { order: 2; }
+        }
+
+        @media (max-width: 768px) {
+            /* Let long contact values and repository names wrap without squeezing cards. */
+            .exp-desc li,
+            .feat-bullets li,
+            .sc-list li,
+            .gh-repo-item,
+            .gh-repo-name {
+                min-width: 0;
+                max-width: 100%;
+                overflow-wrap: anywhere;
+            }
+
+            .nav-system,
+            .nav-brand,
+            .nav-controls {
+                min-width: 0;
             }
         }
 
@@ -813,7 +859,7 @@
 
     <!-- Client-Side Scripts -->
     <script src="js/translations.js"></script>
-    <script src="js/main.js"></script>
+    <script src="js/main.js?v=mobile-theme-fix-20261009"></script>
     <script src="js/github.js"></script>
 </body>
 </html>

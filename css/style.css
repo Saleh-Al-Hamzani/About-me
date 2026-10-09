@@ -10,7 +10,7 @@
 @import 'hero.css';
 @import 'featured.css';
 @import 'about.css';
-@import 'experience.css';
+@import 'experience.css?v=mobile-grid-fix-20261009';
 @import 'tech.css';
 @import 'archive.css';
 @import 'contact.css';
